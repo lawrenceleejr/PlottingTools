@@ -35,7 +35,8 @@
 	],
 
 	"selections" : {
-		"eventSelection": ["passCut5"]
+		"eventSelection": ["PassCut7"],
+		"eventAndDVSelection": ["PassCut7","DV_passCut5"]
 	}
 
 }
