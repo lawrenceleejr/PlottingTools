@@ -5,32 +5,34 @@
 			"plotFilename": "test",
 			"plotDim": 2,
 			"hists": [
-				["./materialMap3D_Run2_v4.1.root","map_yx","yx"],
-				["./materialMap3D_Run2_v4.1.root","map_xz","xz"],
-				["./materialMap3D_Run2_v4.1.root","map_yz","yz"]
+				["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_x_vs_DV_y_3Track","3 Track"],
+				["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_x_vs_DV_y_4Track","4 Track"],
+				["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_x_vs_DV_y_5Track","5 Track"]
 			],
 			"signalHists": [],
-			"logZ": 0,
-			"titles": ["x","y","z"]
+			"logZ": 1,
+			"titles": ["x","y",""]
 		},
 		{
-			"plotFilename": "NJet",
+			"plotFilename": "mDV_nTrkDep",
 			"plotDim": 1,
 			"hists": [
-				["../../ZeroLeptonAnalysis/plottingScripts/hists/output/SR/DataMain/hist-DataMain.root.root","NJet_SRG1b","bg 1"],
-				["../../ZeroLeptonAnalysis/plottingScripts/hists/output/SR/DataMain/hist-DataMain.root.root","NJet_SRG1b","bg 2"]
+				["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_eventSelection","Inclusive"],				
+				["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_eventSelection","Inclusive"]
+
 			],
 			"dataHists": [
-				["../../ZeroLeptonAnalysis/plottingScripts/hists/output/SR/DataMain/hist-DataMain.root.root","NJet_SRG1b","Data"]
+				["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_3Track","3 Track"],
+				["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_4Track","4 Track"],
+				["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_5Track","5 Track"]
 			],
 			"signalHists": [
-				["../../ZeroLeptonAnalysis/plottingScripts/hists/output/SR/DataMain/hist-DataMain.root.root","NJet_SRG1b","signal 1"]
 			],
 			"normalize": 0,
 			"logY": 1,
-			"min": 0.5,
+			"nostack": 0,
 			"ratio": 1,
-			"titles": ["Jet Multiplicity","Events",""]
+			"titles": ["m_{DV} [GeV]","Entries",""]
 		}
 	]
 }

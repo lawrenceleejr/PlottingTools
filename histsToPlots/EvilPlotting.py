@@ -129,7 +129,7 @@ for plot in plots:
 		stack = HistStack()
 		sortedHistsToStack = sorted(histsToStack, key=lambda x: x.Integral() , reverse=False)
 
-		colorpal = sns.husl_palette(len(sortedHistsToStack) )
+		colorpal = sns.husl_palette(len(sortedHistsToStack) , l=0.9)
 		darkercolorpal = sns.husl_palette(len(sortedHistsToStack), l=0.4 )
 
 		for ihist,tmphist in enumerate(sortedHistsToStack):
@@ -208,7 +208,7 @@ for plot in plots:
 			signalHist.Draw(drawOptions)
 			somethingDrawn = True
 
-		drawOptions = "hist e1 "
+		drawOptions = "e1 "
 		for idataHist, dataHist in enumerate(dataHists):
 			if dataHist.Integral():
 				if somethingDrawn and "same" not in drawOptions:
