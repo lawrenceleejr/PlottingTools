@@ -1,0 +1,17 @@
+{
+	"plots":[
+		{
+			"plotFilename": "test",
+			"plotDim": "2D",
+			"hists": [
+				["./materialMap3D_Run2_v4.1.root","map_yx","yx"],
+				["./materialMap3D_Run2_v4.1.root","map_xz","xz"],
+				["./materialMap3D_Run2_v4.1.root","map_yz","yz"]
+			],
+			"signalHists": [],
+			"logZ": 0,
+			"titles": ["x","y","z"]
+		}
+	]
+
+}
