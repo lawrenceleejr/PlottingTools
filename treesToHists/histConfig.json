@@ -1,24 +1,38 @@
 {
 	"treeNames" : ["DVTree_NTuple"],
 
-	"inputTrees" : {
-			"data": ["/afs/cern.ch/user/l/leejr/myeos/../../c/cohm/DV/ntups/v6.0/group.phys-susy.data16_13TeV.DAOD_SUSY15.r8669_p2875.DVn
-	tup.v6.0_NTUP_GRLDVskim_blind/",".root"]
-	},
+	"inputTrees" : [
+			{
+				"name": "data",
+				"directory": "/afs/cern.ch/user/l/leejr/myeos/../../c/cohm/DV/ntups/v6.0/group.phys-susy.data16_13TeV.DAOD_SUSY15.r8669_p2875.DVntup.v6.0_NTUP_GRLDVskim_blind/",
+				"filename": "*.root*"
+			}
+	],
 
-	"commonPlots" : {
-		"DV_m"      : [50, 0, 30],
-		"MET_phi"   : [50, -4, 4],
-	},
+	"commonPlots" : [
+		{ "xvar": "DV_m"      , "xlimits": [50,0,30] },
+		{ "xvar": "MET_phi"   , "xlimits": [50,-4,4] }
+	],
 
+	"commonPlots2D" : [
+		{
+			"xvar": "DV_x",
+			"yvar": "DV_y",
+			"xlimits": [100,-150,150],
+			"ylimits": [100,-150,150]
+		}
+	],
 
-	"commonPlots2D" : {
-		["DV_x","DV_y"] : [ [300, -150, 150] , [300, -150, 150] ]
-	},
-
-	"commonPlots3D" : {
-		["DV_x","DV_y","DV_z"] : [ [100, -150, 150] , [100, -150, 150] , [150, -300, 300] ]
-	},
+	"commonPlots3D" : [
+		{
+			"xvar": "DV_x",
+			"yvar": "DV_y",
+			"zvar": "DV_z",
+			"xlimits": [100,-150,150],
+			"ylimits": [100,-150,150],
+			"zlimits": [100,-150,150]
+		}
+	],
 
 	"selections" : {
 		"eventSelection": ["passCut5"]

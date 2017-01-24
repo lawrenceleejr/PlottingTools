@@ -64,9 +64,13 @@ regions = inputJSON["selections"]
 
 for treeName in treeNames:
 
-	for inputTreeName,inputFileDetails in inputJSON["inputTrees"].iteritems():
+	for inputTreeObject in inputJSON["inputTrees"]:
+		inputTreeName = inputTreeObject["name"]
+		inputTreeFileDirectory = inputTreeObject["directory"]
+		inputTreeFileName = inputTreeObject["filename"]
+
 		my_SHs[inputTreeName] = ROOT.SH.SampleHandler()
-		ROOT.SH.ScanDir().sampleDepth(0).samplePattern("*%s*"%inputFileDetails[1]).scan(my_SHs[inputTreeName], inputFileDetails[0])
+		ROOT.SH.ScanDir().sampleDepth(0).samplePattern(inputTreeFileName).scan(my_SHs[inputTreeName], inputTreeFileDirectory)
 		my_SHs[inputTreeName].setMetaString("nc_tree", "%s"%treeName )
 
 	job = {}
@@ -119,11 +123,12 @@ for treeName in treeNames:
 			job[SH_name].algsAdd(ROOT.MD.AlgCFlow (cutflow[region]))
 
 			## each of this histograms will be made for each region
-			for varname,varlimits in inputJSON["commonPlots"].iteritems():
+			for commonPlot in inputJSON["commonPlots"]:
 				job[SH_name].algsAdd(
 	            	ROOT.MD.AlgHist(
-	            		ROOT.TH1F(varname.replace("/","_over_")+"_%s"%region, varname+"_%s"%region, varlimits[0], varlimits[1], varlimits[2]),
-						varname,
+	            		name = "{0}_{1}".format(commonPlot["xvar"].replace("/","_over_"),region)
+	            		ROOT.TH1F( name, name, *commonPlot["xlimits"]),
+						commonPlot["xvar"],
 						weightstring+"*"+"*".join(regions[region])
 						)
 					)
