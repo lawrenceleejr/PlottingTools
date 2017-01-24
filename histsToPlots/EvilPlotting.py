@@ -80,6 +80,9 @@ for plot in plots:
 
 	if getProperty(plot,"plotDim")==2:
 		for hist in plot["hists"]:
+			c = Canvas(700,700)
+			ROOT.gPad.SetRightMargin(0.25)
+
 			# get each hist, and draw colz. 
 			tmpFile = root_open(hist[0])
 			tmpHist = tmpFile.Get(str(hist[1]))
@@ -89,15 +92,16 @@ for plot in plots:
 
 			tmpHist.Draw("colz")
 
-			# set logz if requested
+			tmpHist.GetZaxis().SetTitleOffset(1.15)
+
+			# # set logz if requested
 			ROOT.gPad.SetLogz(1 if getProperty(plot,"logZ") else 0)
 			ROOT.gPad.SetGrid()
 
-			ROOT.gPad.SetRightMargin(0.25)
-			tmpHist.GetZaxis().SetTitleOffset(1.15)
-
 			# set titles
 			tmpHist.SetTitle("{0};{1};{2};{3}".format(hist[2],*plot["titles"] ) )
+
+			ROOT.ATLASLabel(0.2,0.9, inputJSON["ATLASLabel"]   )
 
 			# write out the output filename with the input hist name appended
 			for iformat in formats:
@@ -122,15 +126,19 @@ for plot in plots:
 		histsToStack = []
 		for ihist,hist in enumerate(getProperty(plot,"hists") ):
 			tmpFile = root_open(hist[0])
-			histsToStack.append( eval("tmpFile.%s"%hist[1])  )
+			histsToStack.append( eval("tmpFile.%s.Clone()"%hist[1])  )
 			histsToStack[-1].SetTitle("{0};{1};{2};{3}".format(hist[2],*plot["titles"] ) )
+			if getProperty(plot,"rebin"):
+				histsToStack[-1].Rebin(plot["rebin"])
+			if getProperty(plot,"xrange"):
+				histsToStack[-1].GetXaxis().SetRangeUser(*plot["xrange"])
 
 
 		stack = HistStack()
 		sortedHistsToStack = sorted(histsToStack, key=lambda x: x.Integral() , reverse=False)
 
-		colorpal = sns.husl_palette(len(sortedHistsToStack) , l=0.9)
-		darkercolorpal = sns.husl_palette(len(sortedHistsToStack), l=0.4 )
+		colorpal = sns.husl_palette(len(sortedHistsToStack)+1 , l=0.9, s=.4)
+		darkercolorpal = sns.husl_palette(len(sortedHistsToStack)+1, l=0.4 )
 
 		for ihist,tmphist in enumerate(sortedHistsToStack):
 			if tmphist.Integral():
@@ -160,6 +168,10 @@ for plot in plots:
 			tmpFile = root_open(hist[0])
 			signalHists.append( eval("tmpFile.%s"%hist[1]) )
 			signalHists[-1].SetTitle("{0};{1};{2};{3}".format(hist[2],*plot["titles"] ) )
+			if getProperty(plot,"rebin"):
+				signalHists[-1].Rebin(plot["rebin"])
+			if getProperty(plot,"xrange"):
+				signalHists[-1].GetXaxis().SetRangeUser(*plot["xrange"])
 
 
 		signalcolorpal = ["r","g","b","m","y"]
@@ -180,6 +192,10 @@ for plot in plots:
 			tmpFile = root_open(hist[0])
 			dataHists.append( eval("tmpFile.%s"%hist[1])  )
 			dataHists[-1].SetTitle("{0};{1};{2};{3}".format(hist[2],*plot["titles"] ) )
+			if getProperty(plot,"rebin"):
+				dataHists[-1].Rebin(plot["rebin"])
+			if getProperty(plot,"xrange"):
+				dataHists[-1].GetXaxis().SetRangeUser(*plot["xrange"])
 
 		datacolorpal = ["k","r","g","b"]
 
@@ -194,7 +210,7 @@ for plot in plots:
 		somethingDrawn = False
 
 		drawOptions = "hist"
-		drawOptions += " nostack" if "nostack" in plot else ""
+		drawOptions += " nostack" if getProperty(plot,"nostack") else ""
 		if stack.sum.Integral():
 			if somethingDrawn and "same" not in drawOptions:
 				drawOptions += " same"
@@ -230,10 +246,12 @@ for plot in plots:
 				style = "F"
 			legend.AddEntry(item, style=style )
 
+
 		legend.SetBorderSize(1)
 		legend.SetTextSize(0.03)
 		legend.Draw()
 
+		ROOT.ATLASLabel(0.2,0.9, inputJSON["ATLASLabel"]   )
 
 
 		newMax = rootstack.GetMaximum()*10. if getProperty(plot,"logY") else rootstack.GetMaximum()*1.2
@@ -255,7 +273,7 @@ for plot in plots:
 				tmpratio.Draw("e1" if idataHist==0 else "e1 same")
 
 				tmpratio.GetYaxis().SetTitle("Ratio");
-				tmpratio.GetYaxis().SetNdivisions(505);
+				# tmpratio.GetYaxis().SetNdivisions(505);
 				tmpratio.GetYaxis().SetTitleSize(20);
 				tmpratio.GetYaxis().SetTitleFont(43);
 				tmpratio.GetYaxis().SetTitleOffset(1.55);
@@ -272,6 +290,10 @@ for plot in plots:
 				tmpratio.GetXaxis().SetTitleOffset(5.);
 				tmpratio.GetXaxis().SetLabelFont(43); # Absolute font size in pixel (precision 3)
 				tmpratio.GetXaxis().SetLabelSize(15)
+
+				if getProperty(plot,"xrange"):
+					tmpratio.GetXaxis().SetRangeUser(*plot["xrange"])
+
 
 				unityline = ROOT.TLine()
 				unityline.DrawLine(ROOT.gPad.GetUxmin(),1.,ROOT.gPad.GetUxmax(),1.)
