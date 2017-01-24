@@ -1,0 +1,27 @@
+{
+	"treeNames" : ["DVTree_NTuple"],
+
+	"inputTrees" : {
+			"data": ["/afs/cern.ch/user/l/leejr/myeos/../../c/cohm/DV/ntups/v6.0/group.phys-susy.data16_13TeV.DAOD_SUSY15.r8669_p2875.DVn
+	tup.v6.0_NTUP_GRLDVskim_blind/",".root"]
+	},
+
+	"commonPlots" : {
+		"DV_m"      : [50, 0, 30],
+		"MET_phi"   : [50, -4, 4],
+	},
+
+
+	"commonPlots2D" : {
+		["DV_x","DV_y"] : [ [300, -150, 150] , [300, -150, 150] ]
+	},
+
+	"commonPlots3D" : {
+		["DV_x","DV_y","DV_z"] : [ [100, -150, 150] , [100, -150, 150] , [150, -300, 300] ]
+	},
+
+	"selections" : {
+		"eventSelection": ["passCut5"]
+	}
+
+}

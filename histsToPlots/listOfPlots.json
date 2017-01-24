@@ -12,10 +12,7 @@
 			"signalHists": [],
 			"logZ": 0,
 			"titles": ["x","y","z"]
-		}
-
-		,
-
+		},
 		{
 			"plotFilename": "NJet",
 			"plotDim": 1,
@@ -33,8 +30,7 @@
 			"logY": 1,
 			"min": 0.5,
 			"ratio": 1,
-			"titles": ["NJet","Events",""]
+			"titles": ["Jet Multiplicity","Events",""]
 		}
 	]
-
 }
