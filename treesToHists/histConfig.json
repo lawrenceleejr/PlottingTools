@@ -36,7 +36,9 @@
 
 	"selections" : {
 		"eventSelection": ["PassCut7"],
-		"eventAndDVSelection": ["PassCut7","DV_passCut5"]
+		"3Track": ["PassCut7","DV_nTracks==3"],
+		"4Track": ["PassCut7","DV_nTracks==4"],
+		"5Track": ["PassCut7","DV_nTracks==5"]
 	}
 
 }
