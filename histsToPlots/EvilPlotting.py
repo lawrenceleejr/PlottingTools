@@ -8,7 +8,7 @@ from rootpy.plotting import Hist, HistStack, Legend, Canvas, Graph, Pad
 from rootpy.plotting.style import get_style, set_style
 from rootpy.plotting.utils import get_limits
 from rootpy.io import root_open
-import os
+import os, re
 
 from rootpy import asrootpy
 
@@ -56,7 +56,11 @@ ROOT.TH1.SetDefaultSumw2()
 import json
 
 with open(options.inputJSONFileName) as inputJSONFile:
-    inputJSON = json.load(inputJSONFile)
+	input_str = inputJSONFile.read()
+	input_str = re.sub(r'\\\n', '', input_str)
+	input_str = re.sub(r'//.*\n', '\n', input_str)
+	inputJSON = json.loads(input_str)
+
 
 plots = inputJSON["plots"]
 # print plots
@@ -126,7 +130,7 @@ for plot in plots:
 		histsToStack = []
 		for ihist,hist in enumerate(getProperty(plot,"hists") ):
 			tmpFile = root_open(hist[0])
-			histsToStack.append( eval("tmpFile.%s.Clone()"%hist[1])  )
+			histsToStack.append( asrootpy(tmpFile.Get(str(hist[1]) )).Clone() )
 			histsToStack[-1].SetTitle("{0};{1};{2};{3}".format(hist[2],*plot["titles"] ) )
 			if getProperty(plot,"rebin"):
 				histsToStack[-1].Rebin(plot["rebin"])
@@ -237,7 +241,7 @@ for plot in plots:
 
 		allItems = dataHists + sortedHistsToStack + signalHists
 
-		legend = Legend( len(allItems), leftmargin=0.55, margin=0.3, topmargin=0.03, entryheight=0.03)
+		legend = Legend( len(allItems), leftmargin=0.4, margin=0.3, topmargin=0.03, entryheight=0.03)
 		for item in allItems:
 			style = "L"
 			if item in dataHists:
