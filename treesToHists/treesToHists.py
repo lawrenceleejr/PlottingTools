@@ -5,7 +5,7 @@
 ##
 
 import ROOT
-import logging, shutil, os, re, itertools
+import logging, shutil, os, re, itertools, re
 
 logging.basicConfig(level=logging.INFO)
 from optparse import OptionParser
@@ -47,7 +47,7 @@ def submitTheThingWrapper(stuff):
 parser = OptionParser()
 parser.add_option("-f", "--file", dest="inputJSONFileName", default="histConfig.json",
                   help="input JSON File")
-parser.add_option("-n", "--ncores", dest="ncores", default="1",
+parser.add_option("-n", "--ncores", dest="ncores", default="3",
                   help="number of cpus to use")
 (options, args) = parser.parse_args()
 
@@ -56,7 +56,10 @@ ncores = min(8,options.ncores)
 import json
 
 with open(options.inputJSONFileName) as inputJSONFile:
-    inputJSON = json.load(inputJSONFile)
+	input_str = inputJSONFile.read()
+	input_str = re.sub(r'\\\n', '', input_str)
+	input_str = re.sub(r'//.*\n', '\n', input_str)
+	inputJSON = json.loads(input_str)
 
 
 treeNames = inputJSON["treeNames"]
