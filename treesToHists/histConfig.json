@@ -2,11 +2,11 @@
 	"treeNames" : ["DVTree_NTuple"],
 
 	"inputTrees" : [
-			// {
-			// 	"name": "data",
-			// 	"directory": "/afs/cern.ch/user/l/leejr/myeos/../../c/cohm/DV/ntups/v6.0/group.phys-susy.data16_13TeV.DAOD_SUSY15.r8669_p2875.DVntup.v6.0_NTUP_GRLDVskim_blind/",
-			// 	"filename": "*.root*"
-			// },
+			{
+				"name": "data",
+				"directory": "/afs/cern.ch/user/l/leejr/myeos/../../c/cohm/DV/ntups/v6.0/group.phys-susy.data16_13TeV.DAOD_SUSY15.r8669_p2875.DVntup.v6.0_NTUP_GRLDVskim_blind/",
+				"filename": "*.root*"
+			},
 			{
 				"name": "signals",
 				"directory": "/afs/cern.ch/user/l/leejr/myeos/../../c/cohm/DV/ntups/v6.0/group.phys-susy.ALLDVSIGNALS.DAOD_SUSY15.r8788_p2877.DVntup.v6.0_NTUP/",
@@ -17,16 +17,27 @@
 	"commonPlots" : [
 		// { "xvar": "DV_m"      , "xlimits": [50,0,30] },
 		// { "xvar": "MET_phi"   , "xlimits": [50,-4,4] }
-		{ "xvar": "Jet_time[0]"   , "xlimits": [50,-10,10] }
+		{ "xvar": "Jet_time[0]"   , "xlimits": [50,-10,20] },
+		{ "xvar": "Jet_EMFrac[0]"          , "xlimits": [50,0,1.5] },
+		{ "xvar": "Jet_LArQ[0]"            , "xlimits": [50,0,1.5] },
+		{ "xvar": "Jet_AvgLArQF[0]"        , "xlimits": [50,0,1.5] },
+		{ "xvar": "Jet_FracSamplingMax[0]" , "xlimits": [50,0,1.5] },
+		{ "xvar": "MET_phi"                , "xlimits": [50,-4, 4] }
 	],
 
 	"commonPlots2D" : [
-		// {
-		// 	"xvar": "DV_x",
-		// 	"yvar": "DV_y",
-		// 	"xlimits": [100,-150,150],
-		// 	"ylimits": [100,-150,150]
-		// }
+		{
+			"xvar": "MET_phi",
+			"yvar": "Jet_FracSamplingMax[0]",
+			"xlimits": [50,-4,4],
+			"ylimits": [50,0,1]
+		},
+		{
+			"xvar": "MET_phi",
+			"yvar": "Jet_EMFrac[0]",
+			"xlimits": [50,-4,4],
+			"ylimits": [50,0,1]
+		},
 	],
 
 	"commonPlots3D" : [
@@ -45,7 +56,8 @@
 		// "3Track": ["PassCut7","DV_nTracks==3"],
 		// "4Track": ["PassCut7","DV_nTracks==4"],
 		// "5Track": ["PassCut7","DV_nTracks==5"]
-		"PassCut5": ["PassCut5"]
+		"PassCut5": ["PassCut5"],
+		"PassCut6": ["PassCut6"],
 	}
 
 
