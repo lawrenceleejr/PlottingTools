@@ -59,6 +59,8 @@ with open(options.inputJSONFileName) as inputJSONFile:
 	input_str = inputJSONFile.read()
 	input_str = re.sub(r'\\\n', '', input_str)
 	input_str = re.sub(r'//.*\n', '\n', input_str)
+	input_str = re.sub(",[ \t\r\n]+}", "}", input_str)
+	input_str = re.sub(",[ \t\r\n]+\]", "]", input_str)
 	inputJSON = json.loads(input_str)
 
 

@@ -59,6 +59,8 @@ with open(options.inputJSONFileName) as inputJSONFile:
 	input_str = inputJSONFile.read()
 	input_str = re.sub(r'\\\n', '', input_str)
 	input_str = re.sub(r'//.*\n', '\n', input_str)
+	input_str = re.sub(",[ \t\r\n]+}", "}", input_str)
+	input_str = re.sub(",[ \t\r\n]+\]", "]", input_str)
 	inputJSON = json.loads(input_str)
 
 
@@ -139,7 +141,10 @@ for plot in plots:
 
 
 		stack = HistStack()
-		sortedHistsToStack = sorted(histsToStack, key=lambda x: x.Integral() , reverse=False)
+		if not getProperty(plot,"nostack"):
+			sortedHistsToStack = sorted(histsToStack, key=lambda x: x.Integral() , reverse=False)
+		else:
+			sortedHistsToStack = histsToStack
 
 		colorpal = sns.husl_palette(len(sortedHistsToStack)+1 , l=0.9, s=.4)
 		darkercolorpal = sns.husl_palette(len(sortedHistsToStack)+1, l=0.4 )
@@ -170,7 +175,7 @@ for plot in plots:
 		signalHists = []
 		for ihist,hist in enumerate(getProperty(plot,"signalHists")):
 			tmpFile = root_open(hist[0])
-			signalHists.append( eval("tmpFile.%s"%hist[1]) )
+			signalHists.append( asrootpy(tmpFile.Get(str(hist[1]) )).Clone()  )
 			signalHists[-1].SetTitle("{0};{1};{2};{3}".format(hist[2],*plot["titles"] ) )
 			if getProperty(plot,"rebin"):
 				signalHists[-1].Rebin(plot["rebin"])
@@ -194,7 +199,7 @@ for plot in plots:
 		dataHists = []
 		for ihist,hist in enumerate(getProperty(plot,"dataHists")):
 			tmpFile = root_open(hist[0])
-			dataHists.append( eval("tmpFile.%s"%hist[1])  )
+			dataHists.append( asrootpy(tmpFile.Get(str(hist[1]) )).Clone()   )
 			dataHists[-1].SetTitle("{0};{1};{2};{3}".format(hist[2],*plot["titles"] ) )
 			if getProperty(plot,"rebin"):
 				dataHists[-1].Rebin(plot["rebin"])

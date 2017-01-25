@@ -13,7 +13,7 @@
 		// 	"signalHists": [],
 		// 	"logZ": 1,
 		// 	"titles": ["x [mm]","y [mm]","Entries"]
-		// // },
+		// },
 		// {
 		// 	"plotFilename": "mDV_nTrkDep",
 		// 	"plotDim": 1,
@@ -47,12 +47,10 @@
 			"hists": [
 				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","Jet_time[0]_eventSelection","gg 1200 100 .4 ns"],
 				["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","Jet_time[0]_eventSelection","gg 1200 100 1 ns"],
-				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","Jet_time[0]_eventSelection","gg 1200 100 3 ns"]
+				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","Jet_time[0]_eventSelection","gg 1200 100 3 ns"],
 			],
 			"dataHists": [
-				// ["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_3Track","3 Track"],
-				// ["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_4Track","4 Track"],
-				// ["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_5Track","5 Track"]
+				["hists/data.root","Jet_time[0]_eventSelection","Data (Blinded)"],
 			],
 			"signalHists": [
 			],
@@ -64,5 +62,124 @@
 			// "min": 1,
 			"titles": ["Leading Jet Timing [ns]","a.u.",""]
 		}
+		,
+		{
+			"plotFilename": "Jet_EMFrac_Signals",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","Jet_EMFrac[0]_eventSelection","gg 1200 100 .4 ns"],
+				["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","Jet_EMFrac[0]_eventSelection","gg 1200 100 1 ns"],
+				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","Jet_EMFrac[0]_eventSelection","gg 1200 100 3 ns"],
+			],
+			"dataHists": [
+				["hists/data.root","Jet_EMFrac[0]_eventSelection","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 1,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"titles": ["Leading Jet EM Fraction","a.u.",""]
+		}
+
+		,
+		{
+			"plotFilename": "Jet_FracSamplingMax_Signals",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","Jet_FracSamplingMax[0]_eventSelection","gg 1200 100 .4 ns"],
+				["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","Jet_FracSamplingMax[0]_eventSelection","gg 1200 100 1 ns"],
+				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","Jet_FracSamplingMax[0]_eventSelection","gg 1200 100 3 ns"],
+			],
+			"dataHists": [
+				["hists/data.root","Jet_FracSamplingMax[0]_eventSelection","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 1,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"titles": ["Leading Jet Max Sampling Fraction","a.u.",""]
+		}
+
+
+		,
+		{
+			"plotFilename": "Jet_AvgLArQF_Signals",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","Jet_AvgLArQF[0]_eventSelection","gg 1200 100 .4 ns"],
+				["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","Jet_AvgLArQF[0]_eventSelection","gg 1200 100 1 ns"],
+				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","Jet_AvgLArQF[0]_eventSelection","gg 1200 100 3 ns"],
+			],
+			"dataHists": [
+				["hists/data.root","Jet_AvgLArQF[0]_eventSelection","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 1,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"titles": ["Leading Jet Avg LAr QF","a.u.",""]
+		}
+		,
+		{
+			"plotFilename": "Jet_LArQ_Signals",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","Jet_LArQ[0]_eventSelection","gg 1200 100 .4 ns"],
+				["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","Jet_LArQ[0]_eventSelection","gg 1200 100 1 ns"],
+				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","Jet_LArQ[0]_eventSelection","gg 1200 100 3 ns"],
+			],
+			"dataHists": [
+				["hists/data.root","Jet_LArQ[0]_eventSelection","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 1,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"titles": ["Leading Jet LAr Quality","a.u.",""]
+		}
+		,
+		{
+			"plotFilename": "MET_phi_Signals",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","MET_phi_eventSelection","gg 1200 100 .4 ns"],
+				["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","MET_phi_eventSelection","gg 1200 100 1 ns"],
+				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","MET_phi_eventSelection","gg 1200 100 3 ns"],
+			],
+			"dataHists": [
+				["hists/data.root","MET_phi_eventSelection","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 1,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"titles": ["MET #phi","a.u.",""]
+		}
+
+		// Jet_EMFrac[0]_eventSelection
+		// Jet_FracSamplingMax[0]_eventSelection
+		// MET_phi_eventSelection
+		// Jet_AvgLArQF[0]_eventSelection
+		// Jet_LArQ[0]_eventSelection
 	]
 }
