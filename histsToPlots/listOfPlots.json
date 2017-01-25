@@ -1,6 +1,46 @@
 {
 	"ATLASLabel": "Internal",
 	"plots":[
+		// {
+		// 	"skip": 0,
+		// 	"plotFilename": "DV_x_y",
+		// 	"plotDim": 2,
+		// 	"hists": [
+		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_x_vs_DV_y_3Track","3 Track"],
+		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_x_vs_DV_y_4Track","4 Track"],
+		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_x_vs_DV_y_5Track","5 Track"]
+		// 	],
+		// 	"signalHists": [],
+		// 	"logZ": 1,
+		// 	"titles": ["x [mm]","y [mm]","Entries"]
+		// // },
+		// {
+		// 	"plotFilename": "mDV_nTrkDep",
+		// 	"plotDim": 1,
+		// 	"hists": [
+		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_eventSelection","Inclusive"],
+		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_eventSelection","Inclusive"],
+		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_eventSelection","Inclusive"],
+		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_eventSelection","Inclusive"],
+		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_eventSelection","Inclusive"]
+
+		// 	],
+		// 	"dataHists": [
+		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_3Track","3 Track"],
+		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_4Track","4 Track"],
+		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_5Track","5 Track"]
+		// 	],
+		// 	"signalHists": [
+		// 	],
+		// 	"normalize": 0,
+		// 	"logY": 1,
+		// 	"nostack": 0,
+		// 	"ratio": 1,
+		// 	"rebin": 1,
+		// 	"min": 1,
+		// 	"titles": ["m_{DV} [GeV]","Entries",""]
+		// }
+
 		{
 			"skip": 0,
 			"plotFilename": "MET_phi_vs_Jet_FracSamplingMax",

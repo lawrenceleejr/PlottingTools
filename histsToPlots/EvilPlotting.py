@@ -255,6 +255,7 @@ for plot in plots:
 		allItems = dataHists + sortedHistsToStack + signalHists
 
 		legend = Legend( len(allItems), leftmargin=0.4, margin=0.25, topmargin=0.03, entryheight=0.025, textsize=0.03)
+
 		for item in allItems:
 			style = "L"
 			if item in dataHists:
