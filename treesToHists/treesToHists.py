@@ -103,7 +103,7 @@ for treeName in treeNames:
 		for region in regions:
 
 			# cutlist = regions[region][1:-1].split("&&")
-			cutlist = [str(x) for x in regions[region] ]
+			cutlist = ["(%s)"%(str(x)) for x in regions[region] ]
 
 			cutflow[region] = ROOT.TH1F ("cutflow_%s"%region, "cutflow_%s"%region, len(cutlist)+1 , 0, len(cutlist)+1)
 			cutflow[region].GetXaxis().SetBinLabel(1, weightstring)
@@ -141,7 +141,7 @@ for treeName in treeNames:
 	            	ROOT.MD.AlgHist(
 	            		ROOT.TH1F( name, name, *commonPlot["xlimits"]),
 						str(commonPlot["xvar"]),
-						weightstring+"*"+"*".join(cutlist)
+						weightstring+"*"+"&&".join(cutlist)
 						)
 					)
 
@@ -151,10 +151,12 @@ for treeName in treeNames:
 												region)
 				job[SH_name].algsAdd(
 	            	ROOT.MD.AlgHist(
-	            		ROOT.TH2F( name, name, *(commonPlot["xlimits"]+commonPlot["ylimits"]) ),
+	            		# ROOT.TH2F( name, name, *(commonPlot["xlimits"]+commonPlot["ylimits"]) ),
+	            		ROOT.TH2F( name, name,   commonPlot["xlimits"][0],commonPlot["xlimits"][1],commonPlot["xlimits"][2],
+	            			commonPlot["ylimits"][0],commonPlot["ylimits"][1],commonPlot["ylimits"][2]),
 						str(commonPlot["xvar"]),
 						str(commonPlot["yvar"]),
-						weightstring+"*"+"*".join(cutlist)
+						weightstring+"*"+"&&".join(cutlist)
 						)
 					)
 
@@ -169,7 +171,7 @@ for treeName in treeNames:
 						str(commonPlot["xvar"]),
 						str(commonPlot["yvar"]),
 						str(commonPlot["zvar"]),
-						weightstring+"*"+"*".join(cutlist)
+						weightstring+"*"+"&&".join(cutlist)
 						)
 					)
 
