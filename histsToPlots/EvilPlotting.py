@@ -77,9 +77,17 @@ if not os.path.exists(options.outputDir):
 ##
 ###############################################
 
+import time
+timestr = time.strftime("%Y%m%d-%H%M%S")
+
+outputRootFile = root_open(options.outputDir+"/plots_"+timestr+".root","w")
 
 for plot in plots:
-	c = Canvas(700,700)
+	outputRootFile.cd()
+	if getProperty(plot,"aspectRatio"):
+		c = Canvas(700,int(700*float(plot["aspectRatio"]) ) )
+	else:
+		c = Canvas(700,700)
 
 	if getProperty(plot,"skip"):
 		continue
@@ -246,7 +254,7 @@ for plot in plots:
 
 		allItems = dataHists + sortedHistsToStack + signalHists
 
-		legend = Legend( len(allItems), leftmargin=0.4, margin=0.3, topmargin=0.03, entryheight=0.03)
+		legend = Legend( len(allItems), leftmargin=0.4, margin=0.25, topmargin=0.03, entryheight=0.025, textsize=0.03)
 		for item in allItems:
 			style = "L"
 			if item in dataHists:
@@ -263,7 +271,7 @@ for plot in plots:
 		ROOT.ATLASLabel(0.2,0.9, inputJSON["ATLASLabel"]   )
 
 
-		newMax = rootstack.GetMaximum()*10. if getProperty(plot,"logY") else rootstack.GetMaximum()*1.2
+		newMax = rootstack.GetMaximum()*1000. if getProperty(plot,"logY") else rootstack.GetMaximum()*1.2
 		rootstack.SetMaximum(newMax)
 
 		if getProperty(plot,"min")!="":
@@ -311,6 +319,10 @@ for plot in plots:
 		# write out the output filename with the input hist name appended
 		for iformat in formats:
 			c.SaveAs("%s/%s.%s"%(options.outputDir,plot["plotFilename"],iformat)  )
+	outputRootFile.cd()
+	c.Write(plot["plotFilename"])
 
+outputRootFile.Write()
+outputRootFile.Close()
 
 
