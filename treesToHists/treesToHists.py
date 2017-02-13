@@ -13,6 +13,7 @@ from optparse import OptionParser
 from copy import deepcopy
 from collections import OrderedDict
 import multiprocessing as mp
+from array import array
 
 import atexit
 @atexit.register
@@ -51,7 +52,9 @@ parser.add_option("-n", "--ncores", dest="ncores", default="3",
                   help="number of cpus to use")
 (options, args) = parser.parse_args()
 
-ncores = min(8,options.ncores)
+ncores = min(8,int(options.ncores) )
+
+print "Using %d!!"%ncores
 
 import json
 
@@ -132,7 +135,7 @@ for treeName in treeNames:
 
 				cutflow[region].GetXaxis().SetBinLabel (i+2, cutpart);
 
-			job[SH_name].algsAdd(ROOT.MD.AlgCFlow (cutflow[region]))
+			# job[SH_name].algsAdd(ROOT.MD.AlgCFlow (cutflow[region]))
 
 			## each of this histograms will be made for each region
 			for commonPlot in inputJSON["commonPlots"]:
@@ -149,16 +152,27 @@ for treeName in treeNames:
 				name = "{0}_vs_{1}_{2}".format(commonPlot["xvar"].replace("/","_over_"),
 												commonPlot["yvar"].replace("/","_over_"),
 												region)
-				job[SH_name].algsAdd(
-	            	ROOT.MD.AlgHist(
-	            		# ROOT.TH2F( name, name, *(commonPlot["xlimits"]+commonPlot["ylimits"]) ),
-	            		ROOT.TH2F( name, name,   commonPlot["xlimits"][0],commonPlot["xlimits"][1],commonPlot["xlimits"][2],
-	            			commonPlot["ylimits"][0],commonPlot["ylimits"][1],commonPlot["ylimits"][2]),
-						str(commonPlot["xvar"]),
-						str(commonPlot["yvar"]),
-						weightstring+"*"+"&&".join(cutlist)
+				if len(commonPlot["xlimits"])>3 and len(commonPlot["ylimits"])>3:
+					job[SH_name].algsAdd(
+		            	ROOT.MD.AlgHist(
+		            		ROOT.TH2F( name, name,  
+		            			len(commonPlot["xlimits"])-1, array('d',commonPlot["xlimits"]),
+		            			len(commonPlot["ylimits"])-1, array('d',commonPlot["ylimits"])),
+							str(commonPlot["xvar"]),
+							str(commonPlot["yvar"]),
+							weightstring+"*"+"&&".join(cutlist)
+							)
 						)
-					)
+				else:
+					job[SH_name].algsAdd(
+		            	ROOT.MD.AlgHist(
+		            		ROOT.TH2F( name, name,   commonPlot["xlimits"][0],commonPlot["xlimits"][1],commonPlot["xlimits"][2],
+		            			commonPlot["ylimits"][0],commonPlot["ylimits"][1],commonPlot["ylimits"][2]),
+							str(commonPlot["xvar"]),
+							str(commonPlot["yvar"]),
+							weightstring+"*"+"&&".join(cutlist)
+							)
+						)
 
 			for commonPlot in inputJSON["commonPlots3D"]:
 				name = "{0}_vs_{1}_vs_{2}_{3}".format(commonPlot["xvar"].replace("/","_over_"),
@@ -189,6 +203,7 @@ for treeName in treeNames:
 print "Lauching the jobs that are in the list!"
 
 if ncores>1:
+	print "Running parallel jobs!"
 	pool = mp.Pool(processes=ncores)
 	pool.map(submitTheThingWrapper,
 		itertools.izip( itertools.repeat(driver),
