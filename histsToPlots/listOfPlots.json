@@ -3,249 +3,392 @@
 	"plots":[
 		// {
 		// 	"skip": 0,
-		// 	"plotFilename": "DV_x_y",
+		// 	"plotFilename": "MET_phi_vs_Jet_FracSamplingMax",
 		// 	"plotDim": 2,
 		// 	"hists": [
-		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_x_vs_DV_y_3Track","3 Track"],
-		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_x_vs_DV_y_4Track","4 Track"],
-		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_x_vs_DV_y_5Track","5 Track"]
+		// 		["hists/data.root","MET_phi_vs_Jet_FracSamplingMax[0]_PassCut6","wNCBCut"],
+		// 		["hists/data.root","MET_phi_vs_Jet_FracSamplingMax[0]_PassCut5","woNCBCut"],
+		// 		["hists/data.root","MET_phi_vs_Jet_FracSamplingMax[0]_PassCut6ExtraNCBCut","wNCBCutPlus"],
 		// 	],
 		// 	"signalHists": [],
 		// 	"logZ": 1,
-		// 	"titles": ["x [mm]","y [mm]","Entries"]
+		// 	"titles": ["MET #phi","Leading Jet Max Sampling Fraction","Entries"]
 		// },
 		// {
-		// 	"plotFilename": "mDV_nTrkDep",
+		// 	"skip": 0,
+		// 	"plotFilename": "MET_phi_vs_Jet_EMFrac",
+		// 	"plotDim": 2,
+		// 	"hists": [
+		// 		["hists/data.root","MET_phi_vs_Jet_EMFrac[0]_PassCut6","wNCBCut"],
+		// 		["hists/data.root","MET_phi_vs_Jet_EMFrac[0]_PassCut6ExtraNCBCut","wNCBCutPlus"],
+		// 		["hists/data.root","MET_phi_vs_Jet_EMFrac[0]_PassCut5","woNCBCut"],
+		// 	],
+		// 	"signalHists": [],
+		// 	"logZ": 1,
+		// 	"titles": ["MET #phi","Leading Jet EM Fraction","Entries"]
+		// }
+		// ,
+		// {
+		// 	"skip": 0,
+		// 	"plotFilename": "MET_vs_",
+		// 	"plotDim": 2,
+		// 	"hists": [
+		// 		["hists/hist-group.phys-susy.402073*","MET_phi_vs_Jet_EMFrac[0]_PassCut6","wNCBCut"],
+		// 		["hists/data.root","MET_phi_vs_Jet_EMFrac[0]_PassCut6ExtraNCBCut","wNCBCutPlus"],
+		// 	],
+		// 	"signalHists": [],
+		// 	"logZ": 1,
+		// 	"titles": ["MET #phi","Leading Jet EM Fraction","Entries"]
+		// }
+		// ,
+		// {
+		// 	"plotFilename": "JetTiming_Signals",
 		// 	"plotDim": 1,
 		// 	"hists": [
-		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_eventSelection","Inclusive"],
-		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_eventSelection","Inclusive"],
-		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_eventSelection","Inclusive"],
-		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_eventSelection","Inclusive"],
-		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_eventSelection","Inclusive"]
-
+		// 		["hists/hist-group.phys-susy.402073*","Jet_time[0]_PassCut6","gg 1200 100 .4 ns"],
+		// 		["hists/hist-group.phys-susy.402074*","Jet_time[0]_PassCut6","gg 1200 100 1 ns"],
+		// 		["hists/hist-group.phys-susy.402075*","Jet_time[0]_PassCut6","gg 1200 100 3 ns"],
 		// 	],
 		// 	"dataHists": [
-		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_3Track","3 Track"],
-		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_4Track","4 Track"],
-		// 		["~/afs/work/public/PlottingTools/treesToHists/data.root","DV_m_5Track","5 Track"]
+		// 		["hists/data.root","Jet_time[0]_PassCut6","Data w/ NCB Cut"],
+		// 		["hists/data.root","Jet_time[0]_PassCut5","Data w/o NCB Cut"],
+		// 		["hists/data.root","Jet_time[0]_PassCut6ExtraNCBCut","Data w/ NCB Cut+"],
 		// 	],
 		// 	"signalHists": [
 		// 	],
-		// 	"normalize": 0,
+		// 	"normalize": 1,
 		// 	"logY": 1,
-		// 	"nostack": 0,
-		// 	"ratio": 1,
-		// 	"rebin": 1,
-		// 	"min": 1,
-		// 	"titles": ["m_{DV} [GeV]","Entries",""]
+		// 	"nostack": 1,
+		// 	"ratio": 0,
+		// 	"rebin": 0,
+		// 	// "min": 1,
+		// 	"titles": ["Leading Jet Timing [ns]","a.u.",""]
+		// }
+		// ,
+		// {
+		// 	"plotFilename": "Jet_EMFrac_Signals",
+		// 	"plotDim": 1,
+		// 	"hists": [
+		// 		["hists/hist-group.phys-susy.402073*","Jet_EMFrac[0]_PassCut6","gg 1200 100 .4 ns"],
+		// 		["hists/hist-group.phys-susy.402074*","Jet_EMFrac[0]_PassCut6","gg 1200 100 1 ns"],
+		// 		["hists/hist-group.phys-susy.402075*","Jet_EMFrac[0]_PassCut6","gg 1200 100 3 ns"],
+		// 	],
+		// 	"dataHists": [
+		// 		["hists/data.root","Jet_EMFrac[0]_PassCut6","Data w/ NCB Cut"],
+		// 		["hists/data.root","Jet_EMFrac[0]_PassCut5","Data w/o NCB Cut"],
+		// 		["hists/data.root","Jet_EMFrac[0]_PassCut6ExtraNCBCut","Data w/ NCB Cut+"],
+		// 	],
+		// 	"signalHists": [
+		// 	],
+		// 	"normalize": 1,
+		// 	"logY": 1,
+		// 	"nostack": 1,
+		// 	"ratio": 0,
+		// 	"rebin": 0,
+		// 	// "min": 1,
+		// 	"titles": ["Leading Jet EM Fraction","a.u.",""]
 		// }
 
-		{
-			"skip": 0,
-			"plotFilename": "MET_phi_vs_Jet_FracSamplingMax",
-			"plotDim": 2,
-			"hists": [
-				["hists/data.root","MET_phi_vs_Jet_FracSamplingMax[0]_PassCut6","wNCBCut"],
-				["hists/data.root","MET_phi_vs_Jet_FracSamplingMax[0]_PassCut5","woNCBCut"],
-				["hists/data.root","MET_phi_vs_Jet_FracSamplingMax[0]_PassCut6ExtraNCBCut","wNCBCutPlus"],
-			],
-			"signalHists": [],
-			"logZ": 1,
-			"titles": ["MET #phi","Leading Jet Max Sampling Fraction","Entries"]
-		},
-		{
-			"skip": 0,
-			"plotFilename": "MET_phi_vs_Jet_EMFrac",
-			"plotDim": 2,
-			"hists": [
-				["hists/data.root","MET_phi_vs_Jet_EMFrac[0]_PassCut6","wNCBCut"],
-				["hists/data.root","MET_phi_vs_Jet_EMFrac[0]_PassCut6ExtraNCBCut","wNCBCutPlus"],
-				["hists/data.root","MET_phi_vs_Jet_EMFrac[0]_PassCut5","woNCBCut"],
-			],
-			"signalHists": [],
-			"logZ": 1,
-			"titles": ["MET #phi","Leading Jet EM Fraction","Entries"]
-		}
-		,
-		{
-			"skip": 0,
-			"plotFilename": "MET_vs_",
-			"plotDim": 2,
-			"hists": [
-				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","MET_phi_vs_Jet_EMFrac[0]_PassCut6","wNCBCut"],
-				["hists/data.root","MET_phi_vs_Jet_EMFrac[0]_PassCut6ExtraNCBCut","wNCBCutPlus"],
-			],
-			"signalHists": [],
-			"logZ": 1,
-			"titles": ["MET #phi","Leading Jet EM Fraction","Entries"]
-		}
-		,
-		{
-			"plotFilename": "JetTiming_Signals",
-			"plotDim": 1,
-			"hists": [
-				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","Jet_time[0]_PassCut6","gg 1200 100 .4 ns"],
-				["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","Jet_time[0]_PassCut6","gg 1200 100 1 ns"],
-				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","Jet_time[0]_PassCut6","gg 1200 100 3 ns"],
-			],
-			"dataHists": [
-				["hists/data.root","Jet_time[0]_PassCut6","Data w/ NCB Cut"],
-				["hists/data.root","Jet_time[0]_PassCut5","Data w/o NCB Cut"],
-				["hists/data.root","Jet_time[0]_PassCut6ExtraNCBCut","Data w/ NCB Cut+"],
-			],
-			"signalHists": [
-			],
-			"normalize": 1,
-			"logY": 1,
-			"nostack": 1,
-			"ratio": 0,
-			"rebin": 0,
-			// "min": 1,
-			"titles": ["Leading Jet Timing [ns]","a.u.",""]
-		}
-		,
-		{
-			"plotFilename": "Jet_EMFrac_Signals",
-			"plotDim": 1,
-			"hists": [
-				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","Jet_EMFrac[0]_PassCut6","gg 1200 100 .4 ns"],
-				["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","Jet_EMFrac[0]_PassCut6","gg 1200 100 1 ns"],
-				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","Jet_EMFrac[0]_PassCut6","gg 1200 100 3 ns"],
-			],
-			"dataHists": [
-				["hists/data.root","Jet_EMFrac[0]_PassCut6","Data w/ NCB Cut"],
-				["hists/data.root","Jet_EMFrac[0]_PassCut5","Data w/o NCB Cut"],
-				["hists/data.root","Jet_EMFrac[0]_PassCut6ExtraNCBCut","Data w/ NCB Cut+"],
-			],
-			"signalHists": [
-			],
-			"normalize": 1,
-			"logY": 1,
-			"nostack": 1,
-			"ratio": 0,
-			"rebin": 0,
-			// "min": 1,
-			"titles": ["Leading Jet EM Fraction","a.u.",""]
-		}
-
-		,
-		{
-			"plotFilename": "Jet_FracSamplingMax_Signals",
-			"plotDim": 1,
-			"hists": [
-				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","Jet_FracSamplingMax[0]_PassCut6","gg 1200 100 .4 ns"],
-				["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","Jet_FracSamplingMax[0]_PassCut6","gg 1200 100 1 ns"],
-				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","Jet_FracSamplingMax[0]_PassCut6","gg 1200 100 3 ns"],
-			],
-			"dataHists": [
-				["hists/data.root","Jet_FracSamplingMax[0]_PassCut6","Data w/ NCB Cut"],
-				["hists/data.root","Jet_FracSamplingMax[0]_PassCut5","Data w/o NCB Cut"],
-				["hists/data.root","Jet_FracSamplingMax[0]_PassCut6ExtraNCBCut","Data w/ NCB Cut+"],
-			],
-			"signalHists": [
-			],
-			"normalize": 1,
-			"logY": 1,
-			"nostack": 1,
-			"ratio": 0,
-			"rebin": 0,
-			// "min": 1,
-			"titles": ["Leading Jet Max Sampling Fraction","a.u.",""]
-		}
+		// ,
+		// {
+		// 	"plotFilename": "Jet_FracSamplingMax_Signals",
+		// 	"plotDim": 1,
+		// 	"hists": [
+		// 		["hists/hist-group.phys-susy.402073*","Jet_FracSamplingMax[0]_PassCut6","gg 1200 100 .4 ns"],
+		// 		["hists/hist-group.phys-susy.402074*","Jet_FracSamplingMax[0]_PassCut6","gg 1200 100 1 ns"],
+		// 		["hists/hist-group.phys-susy.402075*","Jet_FracSamplingMax[0]_PassCut6","gg 1200 100 3 ns"],
+		// 	],
+		// 	"dataHists": [
+		// 		["hists/data.root","Jet_FracSamplingMax[0]_PassCut6","Data w/ NCB Cut"],
+		// 		["hists/data.root","Jet_FracSamplingMax[0]_PassCut5","Data w/o NCB Cut"],
+		// 		["hists/data.root","Jet_FracSamplingMax[0]_PassCut6ExtraNCBCut","Data w/ NCB Cut+"],
+		// 	],
+		// 	"signalHists": [
+		// 	],
+		// 	"normalize": 1,
+		// 	"logY": 1,
+		// 	"nostack": 1,
+		// 	"ratio": 0,
+		// 	"rebin": 0,
+		// 	// "min": 1,
+		// 	"titles": ["Leading Jet Max Sampling Fraction","a.u.",""]
+		// }
 
 
-		,
-		{
-			"plotFilename": "Jet_AvgLArQF_Signals",
-			"plotDim": 1,
-			"hists": [
-				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","Jet_AvgLArQF[0]_PassCut6","gg 1200 100 .4 ns"],
-				["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","Jet_AvgLArQF[0]_PassCut6","gg 1200 100 1 ns"],
-				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","Jet_AvgLArQF[0]_PassCut6","gg 1200 100 3 ns"],
-			],
-			"dataHists": [
-				["hists/data.root","Jet_AvgLArQF[0]_PassCut6","Data w/ NCB Cut"],
-				["hists/data.root","Jet_AvgLArQF[0]_PassCut5","Data w/o NCB Cut"],
-				["hists/data.root","Jet_AvgLArQF[0]_PassCut6ExtraNCBCut","Data w/ NCB Cut+"],
-			],
-			"signalHists": [
-			],
-			"normalize": 1,
-			"logY": 1,
-			"nostack": 1,
-			"ratio": 0,
-			"rebin": 0,
-			// "min": 1,
-			"titles": ["Leading Jet Avg LAr QF","a.u.",""]
-		}
-		,
-		{
-			"plotFilename": "Jet_LArQ_Signals",
-			"plotDim": 1,
-			"hists": [
-				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","Jet_LArQ[0]_PassCut6","gg 1200 100 .4 ns"],
-				["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","Jet_LArQ[0]_PassCut6","gg 1200 100 1 ns"],
-				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","Jet_LArQ[0]_PassCut6","gg 1200 100 3 ns"],
-			],
-			"dataHists": [
-				["hists/data.root","Jet_LArQ[0]_PassCut6","Data w/ NCB Cut"],
-				["hists/data.root","Jet_LArQ[0]_PassCut5","Data w/o NCB Cut"],
-				["hists/data.root","Jet_LArQ[0]_PassCut6ExtraNCBCut","Data w/ NCB Cut+"],
-			],
-			"signalHists": [
-			],
-			"normalize": 1,
-			"logY": 1,
-			"nostack": 1,
-			"ratio": 0,
-			"rebin": 0,
-			// "min": 1,
-			"titles": ["Leading Jet LAr Quality","a.u.",""]
-		}
-		,
-		{
-			"plotFilename": "MET_phi_Signals",
-			"plotDim": 1,
-			"hists": [
-				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","MET_phi_PassCut6","gg 1200 100 .4 ns"],
-				["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","MET_phi_PassCut6","gg 1200 100 1 ns"],
-				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","MET_phi_PassCut6","gg 1200 100 3 ns"],
-			],
-			"dataHists": [
-				["hists/data.root","MET_phi_PassCut6","Data w/ NCB Cut"],
-				["hists/data.root","MET_phi_PassCut5","Data w/o NCB Cut"],
-				["hists/data.root","MET_phi_PassCut6ExtraNCBCut","Data w/ NCB Cut+"],
-			],
-			"signalHists": [
-			],
-			"normalize": 1,
-			"logY": 1,
-			"nostack": 1,
-			"ratio": 0,
-			"rebin": 0,
-			// "min": 1,
-			"titles": ["MET #phi","a.u.",""]
-		}
-		,
+		// ,
+		// {
+		// 	"plotFilename": "Jet_AvgLArQF_Signals",
+		// 	"plotDim": 1,
+		// 	"hists": [
+		// 		["hists/hist-group.phys-susy.402073*","Jet_AvgLArQF[0]_PassCut6","gg 1200 100 .4 ns"],
+		// 		["hists/hist-group.phys-susy.402074*","Jet_AvgLArQF[0]_PassCut6","gg 1200 100 1 ns"],
+		// 		["hists/hist-group.phys-susy.402075*","Jet_AvgLArQF[0]_PassCut6","gg 1200 100 3 ns"],
+		// 	],
+		// 	"dataHists": [
+		// 		["hists/data.root","Jet_AvgLArQF[0]_PassCut6","Data w/ NCB Cut"],
+		// 		["hists/data.root","Jet_AvgLArQF[0]_PassCut5","Data w/o NCB Cut"],
+		// 		["hists/data.root","Jet_AvgLArQF[0]_PassCut6ExtraNCBCut","Data w/ NCB Cut+"],
+		// 	],
+		// 	"signalHists": [
+		// 	],
+		// 	"normalize": 1,
+		// 	"logY": 1,
+		// 	"nostack": 1,
+		// 	"ratio": 0,
+		// 	"rebin": 0,
+		// 	// "min": 1,
+		// 	"titles": ["Leading Jet Avg LAr QF","a.u.",""]
+		// }
+		// ,
+		// {
+		// 	"plotFilename": "Jet_LArQ_Signals",
+		// 	"plotDim": 1,
+		// 	"hists": [
+		// 		["hists/hist-group.phys-susy.402073*","Jet_LArQ[0]_PassCut6","gg 1200 100 .4 ns"],
+		// 		["hists/hist-group.phys-susy.402074*","Jet_LArQ[0]_PassCut6","gg 1200 100 1 ns"],
+		// 		["hists/hist-group.phys-susy.402075*","Jet_LArQ[0]_PassCut6","gg 1200 100 3 ns"],
+		// 	],
+		// 	"dataHists": [
+		// 		["hists/data.root","Jet_LArQ[0]_PassCut6","Data w/ NCB Cut"],
+		// 		["hists/data.root","Jet_LArQ[0]_PassCut5","Data w/o NCB Cut"],
+		// 		["hists/data.root","Jet_LArQ[0]_PassCut6ExtraNCBCut","Data w/ NCB Cut+"],
+		// 	],
+		// 	"signalHists": [
+		// 	],
+		// 	"normalize": 1,
+		// 	"logY": 1,
+		// 	"nostack": 1,
+		// 	"ratio": 0,
+		// 	"rebin": 0,
+		// 	// "min": 1,
+		// 	"titles": ["Leading Jet LAr Quality","a.u.",""]
+		// }
+		// ,
+		// {
+		// 	"plotFilename": "MET_phi_Signals",
+		// 	"plotDim": 1,
+		// 	"hists": [
+		// 		["hists/hist-group.phys-susy.402073*","MET_phi_PassCut6","gg 1200 100 .4 ns"],
+		// 		["hists/hist-group.phys-susy.402074*","MET_phi_PassCut6","gg 1200 100 1 ns"],
+		// 		["hists/hist-group.phys-susy.402075*","MET_phi_PassCut6","gg 1200 100 3 ns"],
+		// 	],
+		// 	"dataHists": [
+		// 		["hists/data.root","MET_phi_PassCut6","Data w/ NCB Cut"],
+		// 		["hists/data.root","MET_phi_PassCut5","Data w/o NCB Cut"],
+		// 		["hists/data.root","MET_phi_PassCut6ExtraNCBCut","Data w/ NCB Cut+"],
+		// 	],
+		// 	"signalHists": [
+		// 	],
+		// 	"normalize": 1,
+		// 	"logY": 1,
+		// 	"nostack": 1,
+		// 	"ratio": 0,
+		// 	"rebin": 0,
+		// 	// "min": 1,
+		// 	"titles": ["MET #phi","a.u.",""]
+		// }
+		// ,
 		{
 			"plotFilename": "MET_Signals",
 			"plotDim": 1,
 			"hists": [
-				["hists/hist-group.phys-susy.402073.10511042._000054.ntup.root.root","MET_PassCut6","gg 1200 100 0.4 ns"],
-				["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","MET_PassCut6","gg 1200 100 1 ns"],
-				["hists/hist-group.phys-susy.402075.10511042._000056.ntup.root.root","MET_PassCut6","gg 1200 100 3 ns"],
-				["hists/hist-group.phys-susy.402716.10511042._000124.ntup.root.root","MET_PassCut6","gg 1200 1070 1 ns"],
-				["hists/hist-group.phys-susy.402717.10511042._000125.ntup.root.root","MET_PassCut6","gg 1200 1120 1 ns"],
-				["hists/hist-group.phys-susy.402718.10511042._000126.ntup.root.root","MET_PassCut6","gg 1200 1150 1 ns"],
-				["hists/hist-group.phys-susy.402719.10511042._000127.ntup.root.root","MET_PassCut6","gg 1200 1170 1 ns"],
-				["hists/hist-group.phys-susy.402735.10511042._000143.ntup.root.root","MET_PassCut6","gg 2000 100 1 ns"],
-				["hists/hist-group.phys-susy.402777.10511042._000086.ntup.root.root","MET_PassCut6","gg 2000 100 0.01 ns"],
-				["hists/hist-group.phys-susy.402785.10511042._000209.ntup.root.root","MET_PassCut6","gg 2000 100 0.04 ns"],
-				["hists/hist-group.phys-susy.402793.10511042._000227.ntup.root.root","MET_PassCut6","gg 2000 100 0.1 ns"],
+				["hists/hist-group.phys-susy.402720*","MET_baseSelection","gg 1400 100 1 ns"  , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402742*","MET_baseSelection","gg 1400 600 1 ns" ,  "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402743*","MET_baseSelection","gg 1400 800 1 ns" ,  "1000.*0.0253/8500"],
+				["hists/hist-group.phys-susy.402721*","MET_baseSelection","gg 1400 1270 1 ns" , "1000.*0.0253/8800"],
+				["hists/hist-group.phys-susy.402722*","MET_baseSelection","gg 1400 1320 1 ns" , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402723*","MET_baseSelection","gg 1400 1350 1 ns" , "1000.*0.0253/10000"],
+				["hists/hist-group.phys-susy.402724*","MET_baseSelection","gg 1400 1370 1 ns" , "1000.*0.0253/10000"],
 			],
 			"dataHists": [
-				["hists/data.root","MET_PassCut6","Data (Blinded)"],
+				["hists/data.root","MET_baseSelection","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 1,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "max": 1e9,
+			"lumi": 33.1,
+			"titles": ["MET","a.u.",""],
+		}
+		,
+
+		{ 
+			"plotFilename": "NDV_LowMET",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402720*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_veryLowMETSelectionMC","gg 1400 100 1 ns"  , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402742*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_veryLowMETSelectionMC","gg 1400 600 1 ns" , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402743*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_veryLowMETSelectionMC","gg 1400 800 1 ns" , "1000.*0.0253/8500"],
+				["hists/hist-group.phys-susy.402721*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_veryLowMETSelectionMC","gg 1400 1270 1 ns" , "1000.*0.0253/8800"],
+				["hists/hist-group.phys-susy.402722*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_veryLowMETSelectionMC","gg 1400 1320 1 ns" , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402723*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_veryLowMETSelectionMC","gg 1400 1350 1 ns" , "1000.*0.0253/10000"],
+				["hists/hist-group.phys-susy.402724*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_veryLowMETSelectionMC","gg 1400 1370 1 ns" , "1000.*0.0253/10000"],
+
+			],
+			"dataHists": [
+				["hists/data.root","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_veryLowMETSelection","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 0,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"lumi": 33.1,
+			"titles": ["NDV (4-Track, >10 GeV)","Events",""],
+		}
+		,
+		{ 
+			"plotFilename": "NDV_VRMET150DPhi075_1400",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402720*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1400 100 1 ns"  , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402742*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1400 600 1 ns" ,  "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402743*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1400 800 1 ns" ,  "1000.*0.0253/8500"],
+				["hists/hist-group.phys-susy.402721*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1400 1270 1 ns" , "1000.*0.0253/8800"],
+				["hists/hist-group.phys-susy.402722*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1400 1320 1 ns" , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402723*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1400 1350 1 ns" , "1000.*0.0253/10000"],
+				["hists/hist-group.phys-susy.402724*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1400 1370 1 ns" , "1000.*0.0253/10000"],
+
+			],
+			"dataHists": [
+				["hists/data.root","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 0,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"lumi": 33.1,
+			"titles": ["NDV (4-Track, >10 GeV)","Events",""],
+		}
+		,
+		{ 
+			"plotFilename": "NDV_VRMET150DPhi075_1200",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402074*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1200 100 1 ns"   , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402716*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1200 1070 1 ns"  , "1000.*0.0856/9800"  ],
+				["hists/hist-group.phys-susy.402717*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1200 1120 1 ns"  , "1000.*0.0856/9800"  ],
+				["hists/hist-group.phys-susy.402718*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1200 1150 1 ns"  , "1000.*0.0856/9400"  ],
+				["hists/hist-group.phys-susy.402719*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1200 1170 1 ns"  , "1000.*0.0856/9800"  ],
+
+			],
+			"dataHists": [
+				["hists/data.root","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 0,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"lumi": 33.1,
+			"titles": ["NDV (4-Track, >10 GeV)","Events",""],
+		}
+		,
+		{ 
+			"plotFilename": "NDV_VRMET150DPhi075_1000",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402053*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1000 100 1 ns"  , "1000.*0.325/9000"  ],
+				["hists/hist-group.phys-susy.402711*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1000 870 1 ns"  , "1000.*0.325/10000"  ],
+				["hists/hist-group.phys-susy.402712*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1000 920 1 ns"  , "1000.*0.325/9000"  ],
+				["hists/hist-group.phys-susy.402713*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1000 950 1 ns"  , "1000.*0.325/9000"  ],
+				["hists/hist-group.phys-susy.402714*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1000 970 1 ns"  , "1000.*0.325/8500"  ],
+			],
+			"dataHists": [
+				["hists/data.root","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 0,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"lumi": 33.1,
+			"titles": ["NDV (4-Track, >10 GeV)","Events",""],
+		}
+		,
+		{ 
+			"plotFilename": "NDV_VRMET150DPhi075_1200_Lifetime",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402773*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1200 100 0.01 ns"  , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402781*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1200 100 0.04 ns"  , "1000.*0.0856/8000"  ],
+				["hists/hist-group.phys-susy.402789*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1200 100 0.1 ns"  , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402073*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1200 100 0.4 ns"  , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402074*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1200 100 1 ns"  , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402075*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1200 100 10 ns"  , "1000.*0.0856/10000"  ],
+			],
+			"dataHists": [
+				["hists/data.root","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 0,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"lumi": 33.1,
+			"titles": ["NDV (4-Track, >10 GeV)","Events",""],
+		}
+		,
+		{ 
+			"plotFilename": "NDV_VRMET150DPhi075_1000_Lifetime",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402772*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1000 100 0.01 ns"  , "1000.*0.325/8000" ],
+				["hists/hist-group.phys-susy.403061*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1000 900 0.01 ns"  , "1000.*0.325/10000" ],
+				["hists/hist-group.phys-susy.403062*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1000 900 0.04 ns"  , "1000.*0.325/6000" ],
+				["hists/hist-group.phys-susy.403060*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1000 900 0.1 ns"   , "1000.*0.325/9000" ],
+				["hists/hist-group.phys-susy.403057*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1000 900 1 ns"     , "1000.*0.325/10000" ],
+				["hists/hist-group.phys-susy.403058*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1000 900 3 ns"     , "1000.*0.325/8000" ],
+				["hists/hist-group.phys-susy.403059*","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075MC","gg 1000 900 10 ns"    , "1000.*0.325/10000" ],
+			],
+			"dataHists": [
+				["hists/data.root","Sum$(DV_passCut5&&(DV_nTracks==4)&&(DV_m>10))_VRSelectionMET150DPhi075","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 0,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"lumi": 33.1,
+			"titles": ["NDV (4-Track, >10 GeV)","Events",""],
+		}
+		,
+		{ 
+			"plotFilename": "NJet",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402720*","Jet_n_veryLowMETSelectionMC","gg 1400 100 1 ns"  , "1000.*0.0253/5000"],
+				["hists/hist-group.phys-susy.402721*","Jet_n_veryLowMETSelectionMC","gg 1400 1270 1 ns" , "1000.*0.0253/5000"],
+				["hists/hist-group.phys-susy.402722*","Jet_n_veryLowMETSelectionMC","gg 1400 1320 1 ns" , "1000.*0.0253/5000"],
+				["hists/hist-group.phys-susy.402723*","Jet_n_veryLowMETSelectionMC","gg 1400 1350 1 ns" , "1000.*0.0253/5000"],
+				["hists/hist-group.phys-susy.402724*","Jet_n_veryLowMETSelectionMC","gg 1400 1370 1 ns" , "1000.*0.0253/5000"],
+
+			],
+			"dataHists": [
+				["hists/data.root","Jet_n_veryLowMETSelection","Data (Blinded)"],
 			],
 			"signalHists": [
 			],
@@ -255,7 +398,264 @@
 			"ratio": 0,
 			"rebin": 0,
 			// "min": 1,
-			"titles": ["MET","a.u.",""],
+			"lumi": 33.1,
+			"titles": ["Jet Multiplicity","a.u.",""],
 		}
+		,
+		{ 
+			"plotFilename": "MinDPhi20",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402720*","dPhiMinMETJets20GeV_lowMETSelection","gg 1400 100 1 ns"  , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402742*","dPhiMinMETJets20GeV_lowMETSelection","gg 1400 600 1 ns" ,  "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402743*","dPhiMinMETJets20GeV_lowMETSelection","gg 1400 800 1 ns" ,  "1000.*0.0253/8500"],
+				["hists/hist-group.phys-susy.402721*","dPhiMinMETJets20GeV_lowMETSelection","gg 1400 1270 1 ns" , "1000.*0.0253/8800"],
+				["hists/hist-group.phys-susy.402722*","dPhiMinMETJets20GeV_lowMETSelection","gg 1400 1320 1 ns" , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402723*","dPhiMinMETJets20GeV_lowMETSelection","gg 1400 1350 1 ns" , "1000.*0.0253/10000"],
+				["hists/hist-group.phys-susy.402724*","dPhiMinMETJets20GeV_lowMETSelection","gg 1400 1370 1 ns" , "1000.*0.0253/10000"],
+
+			],
+			"dataHists": [
+				["hists/data.root","dPhiMinMETJets20GeV_lowMETSelection","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 1,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"lumi": 33.1,
+			"titles": ["min #Delta#phi(Jet[2], MET)","a.u.",""],
+		}
+		,
+		{ 
+			"plotFilename": "MinDPhi30",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402720*","dPhiMinMETJets30GeV_lowMETSelection","gg 1400 100 1 ns"  , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402742*","dPhiMinMETJets30GeV_lowMETSelection","gg 1400 600 1 ns" ,  "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402743*","dPhiMinMETJets30GeV_lowMETSelection","gg 1400 800 1 ns" ,  "1000.*0.0253/8500"],
+				["hists/hist-group.phys-susy.402721*","dPhiMinMETJets30GeV_lowMETSelection","gg 1400 1270 1 ns" , "1000.*0.0253/8800"],
+				["hists/hist-group.phys-susy.402722*","dPhiMinMETJets30GeV_lowMETSelection","gg 1400 1320 1 ns" , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402723*","dPhiMinMETJets30GeV_lowMETSelection","gg 1400 1350 1 ns" , "1000.*0.0253/10000"],
+				["hists/hist-group.phys-susy.402724*","dPhiMinMETJets30GeV_lowMETSelection","gg 1400 1370 1 ns" , "1000.*0.0253/10000"],
+
+			],
+			"dataHists": [
+				["hists/data.root","dPhiMinMETJets30GeV_lowMETSelection","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 1,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"lumi": 33.1,
+			"titles": ["min #Delta#phi(Jet[All], MET)","a.u.",""],
+		},
+		{ 
+			"plotFilename": "MinDPhi30_ntuple",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402720*","Min$(abs(TVector2::Phi_mpi_pi((Jet_phi)-(MET_phi))))_lowMETSelection","gg 1400 100 1 ns"  , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402742*","Min$(abs(TVector2::Phi_mpi_pi((Jet_phi)-(MET_phi))))_lowMETSelection","gg 1400 600 1 ns" ,  "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402743*","Min$(abs(TVector2::Phi_mpi_pi((Jet_phi)-(MET_phi))))_lowMETSelection","gg 1400 800 1 ns" ,  "1000.*0.0253/8500"],
+				["hists/hist-group.phys-susy.402721*","Min$(abs(TVector2::Phi_mpi_pi((Jet_phi)-(MET_phi))))_lowMETSelection","gg 1400 1270 1 ns" , "1000.*0.0253/8800"],
+				["hists/hist-group.phys-susy.402722*","Min$(abs(TVector2::Phi_mpi_pi((Jet_phi)-(MET_phi))))_lowMETSelection","gg 1400 1320 1 ns" , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402723*","Min$(abs(TVector2::Phi_mpi_pi((Jet_phi)-(MET_phi))))_lowMETSelection","gg 1400 1350 1 ns" , "1000.*0.0253/10000"],
+				["hists/hist-group.phys-susy.402724*","Min$(abs(TVector2::Phi_mpi_pi((Jet_phi)-(MET_phi))))_lowMETSelection","gg 1400 1370 1 ns" , "1000.*0.0253/10000"],
+
+			],
+			"dataHists": [
+				["hists/data.root","Min$(abs(TVector2::Phi_mpi_pi((Jet_phi)-(MET_phi))))_lowMETSelection","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 1,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"lumi": 33.1,
+			"titles": ["min #Delta#phi(Jet[All], MET)","a.u.",""],
+		}
+		,
+		// // ,
+		// {
+		// 	"plotFilename": "MET_VR",
+		// 	"plotDim": 1,
+		// 	"hists": [
+		// 		["hists/hist-group.phys-susy.402073*","MET_3Track","gg 1200 100 0.4 ns 3Trk" , "1000.*0.0856/5000"  ],
+		// 		["hists/hist-group.phys-susy.402073*","MET_4Track","gg 1200 100 0.4 ns 4Trk" , "1000.*0.0856/5000"  ],
+		// 		["hists/hist-group.phys-susy.402716*","MET_4Track","gg 1200 1070 1 ns"  , "1000.*0.0856/5000"  ],
+		// 	],
+		// 	"dataHists": [
+		// 		["hists/data.root","MET_3Track","Data (3-Track)"],
+		// 		// ["hists/data.root","MET_4Track","Data (4-Track)"],
+		// 	],
+		// 	"signalHists": [
+		// 	],
+		// 	"normalize": 1,
+		// 	"logY": 1,
+		// 	"nostack": 1,
+		// 	"ratio": 0,
+		// 	"rebin": 0,
+		// 	// "max": 1e9,
+		// 	"lumi": 33.1,
+		// 	"integralAbove":200,
+		// 	"titles": ["MET","a.u.",""],
+		// }
+		// ,
+		// {
+		// 	"skip": 0,
+		// 	"plotFilename": "MET_vs_DV_m",
+		// 	"plotDim": 2,
+		// 	"hists": [
+		// 		["hists/data.root","MET_vs_DV_m*( DV_passCut5&&(DV_m>10)&&DV_nTracks>2 )_baseSelection","Data"],
+		// 		["hists/hist-group.phys-susy.402074*","MET_vs_DV_m*( DV_passCut5&&(DV_m>10)&&DV_nTracks>2 )_baseSelection","MC"],
+		// 	],
+		// 	"signalHists": [],
+		// 	"logZ": 1,
+		// 	"titles": ["MET [GeV]","m_{DV} [GeV]","Entries"]
+		// },
+
+		// {
+		// 	"plotFilename": "DVm_METSlices",
+		// 	"plotDim": 1,
+		// 	"hists": [
+		// 		["hists/hist-group.phys-susy.402074*","DV_m*(DV_passCut5)_MET000","402074 0-100 GeV"],
+		// 		["hists/hist-group.phys-susy.402074*","DV_m*(DV_passCut5)_MET100","402074 100-200 GeV"],
+		// 		["hists/hist-group.phys-susy.402074*","DV_m*(DV_passCut5)_MET200","402074 200-300 GeV"],
+		// 		["hists/hist-group.phys-susy.402074*","DV_m*(DV_passCut5)_MET300","402074 300-400 GeV"],
+		// 	],
+		// 	"dataHists": [
+		// 		["hists/data.root","DV_m*(DV_passCut5)_MET000","Data 0-100 GeV"],
+		// 		["hists/data.root","DV_m*(DV_passCut5)_MET100","Data 100-200 GeV"],
+		// 		["hists/data.root","DV_m*(DV_passCut5)_MET200","Data 200-300 GeV"],
+		// 		["hists/data.root","DV_m*(DV_passCut5)_MET300","Data 300-400 GeV"],
+		// 	],
+		// 	"signalHists": [
+		// 	],
+		// 	"normalize": 1,
+		// 	"normalizeFrom": 3,
+		// 	"logY": 1,
+		// 	"nostack": 1,
+		// 	"ratio": 0,
+		// 	"rebin": 2,
+		// 	// "max": 1e9,
+		// 	"lumi": 33.1,
+		// 	"titles": ["m_{DV} [GeV]","a.u.",""],
+		// }
+		// ,
+		// {
+		// 	"plotFilename": "DVntrk_METSlices",
+		// 	"plotDim": 1,
+		// 	"hists": [
+		// 		["hists/hist-group.phys-susy.402074*","DV_nTracks*(DV_passCut5)_MET000","402074 0-100 GeV"],
+		// 		["hists/hist-group.phys-susy.402074*","DV_nTracks*(DV_passCut5)_MET100","402074 100-200 GeV"],
+		// 		["hists/hist-group.phys-susy.402074*","DV_nTracks*(DV_passCut5)_MET200","402074 200-300 GeV"],
+		// 		["hists/hist-group.phys-susy.402074*","DV_nTracks*(DV_passCut5)_MET300","402074 300-400 GeV"],
+		// 	],
+		// 	"dataHists": [
+		// 		["hists/data.root","DV_nTracks*(DV_passCut5)_MET000","Data 0-100 GeV"],
+		// 		["hists/data.root","DV_nTracks*(DV_passCut5)_MET100","Data 100-200 GeV"],
+		// 		["hists/data.root","DV_nTracks*(DV_passCut5)_MET200","Data 200-300 GeV"],
+		// 		["hists/data.root","DV_nTracks*(DV_passCut5)_MET300","Data 300-400 GeV"],
+		// 	],
+		// 	"signalHists": [
+		// 	],
+		// 	"normalize": 1,
+		// 	"normalizeFrom": 3,
+		// 	"logY": 1,
+		// 	"nostack": 1,
+		// 	"ratio": 0,
+		// 	"rebin": 0,
+		// 	"min": 1e-5,
+		// 	"lumi": 33.1,
+		// 	"titles": ["n_{Tracks}","a.u.",""],
+		// }
+		// ,
+		
+		{
+			"plotFilename": "DVm_DPhiSlices",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402074*","DV_m*(DV_passCut5)_DPhi0","402074 0-1"],
+				["hists/hist-group.phys-susy.402074*","DV_m*(DV_passCut5)_DPhi1","402074 1-2"],
+				["hists/hist-group.phys-susy.402074*","DV_m*(DV_passCut5)_DPhi2","402074 2-3"],
+			],
+			"dataHists": [
+				["hists/data.root","DV_m*(DV_passCut5)_DPhi0","Data 0-1"],
+				["hists/data.root","DV_m*(DV_passCut5)_DPhi1","Data 1-2"],
+				["hists/data.root","DV_m*(DV_passCut5)_DPhi2","Data 2-3"],
+			],
+			"signalHists": [
+			],
+			"normalize": 1,
+			"normalizeFrom": 3,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 2,
+			// "max": 1e9,
+			"lumi": 33.1,
+			"titles": ["m_{DV} [GeV]","a.u.",""],
+		}
+		,
+		{
+			"plotFilename": "DVnTracks_DPhiSlices",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402074*","DV_nTracks*(DV_passCut5)_DPhi0","402074 0-1"],
+				["hists/hist-group.phys-susy.402074*","DV_nTracks*(DV_passCut5)_DPhi1","402074 1-2"],
+				["hists/hist-group.phys-susy.402074*","DV_nTracks*(DV_passCut5)_DPhi2","402074 2-3"],
+			],
+			"dataHists": [
+				["hists/data.root","DV_nTracks*(DV_passCut5)_DPhi0","Data 0-1"],
+				["hists/data.root","DV_nTracks*(DV_passCut5)_DPhi1","Data 1-2"],
+				["hists/data.root","DV_nTracks*(DV_passCut5)_DPhi2","Data 2-3"],
+			],
+			"signalHists": [
+			],
+			"normalize": 1,
+			"normalizeFrom": 3,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			// "rebin": 2,
+			"min": 1e-8,
+			"lumi": 33.1,
+			"titles": ["n_{Tracks}","a.u.",""],
+		}
+		,
+		{ 
+			"plotFilename": "dummy",
+			"plotDim": 1,
+			"hists": [
+				["hists/data.root","Sum$(DV_passCut5&&(DV_nTracks==3)&&(DV_m>10))_VRSelectionMET150DPhi075","gg 1400 1370 1 ns" , "1"],
+
+			],
+			"dataHists": [
+				["hists/data.root","Sum$(DV_passCut5&&(DV_nTracks==3)&&(DV_m>10))_baseSelection","Data (Blinded)"],
+				["hists/data.root","Sum$(DV_passCut5&&(DV_nTracks==3)&&(DV_m>10))_VRSelectionMET150DPhi075","Data (Blinded)"],
+			],
+			"signalHists": [
+			],
+			"normalize": 0,
+			"integralAbove": 1,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			"rebin": 0,
+			// "min": 1,
+			"lumi": 33.1,
+			"titles": ["NDV (4-Track, >10 GeV)","Events",""],
+		}
+		,
 	]
 }

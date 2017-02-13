@@ -1,0 +1,55 @@
+{
+	"ATLASLabel": "Internal",
+	"plots":[
+		{
+			"skip": 0,
+			"plotFilename": "MET_HLT_vs_MET_phi",
+			"plotDim": 2,
+			"hists": [
+				["hists/data.root","MET_HLT_vs_MET_phi_PassCut5MET250","HLTMETvsMETPhi"],
+			],
+			"signalHists": [],
+			"logZ": 1,
+			"titles": ["MET [GeV]","MET #phi","Entries"]
+		},
+		{
+			"skip": 0,
+			"plotFilename": "MHT_HLT_vs_MET_phi",
+			"plotDim": 2,
+			"hists": [
+				["hists/data.root","MHT_HLT_vs_MET_phi_PassCut5MET250","HLTMHTvsMETPhi"],
+			],
+			"signalHists": [],
+			"logZ": 1,
+			"titles": ["MHT [GeV]","MET #phi","Entries"]
+		},
+		// {
+		// 	"plotFilename": "DVntrk_METSlices",
+		// 	"plotDim": 1,
+		// 	"hists": [
+		// 		["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","DV_nTracks*(DV_passCut5)_MET000","402074 0-100 GeV"],
+		// 		["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","DV_nTracks*(DV_passCut5)_MET100","402074 100-200 GeV"],
+		// 		["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","DV_nTracks*(DV_passCut5)_MET200","402074 200-300 GeV"],
+		// 		["hists/hist-group.phys-susy.402074.10511042._000055.ntup.root.root","DV_nTracks*(DV_passCut5)_MET300","402074 300-400 GeV"],
+		// 	],
+		// 	"dataHists": [
+		// 		["hists/data.root","DV_nTracks*(DV_passCut5)_MET000","Data 0-100 GeV"],
+		// 		["hists/data.root","DV_nTracks*(DV_passCut5)_MET100","Data 100-200 GeV"],
+		// 		["hists/data.root","DV_nTracks*(DV_passCut5)_MET200","Data 200-300 GeV"],
+		// 		["hists/data.root","DV_nTracks*(DV_passCut5)_MET300","Data 300-400 GeV"],
+		// 	],
+		// 	"signalHists": [
+		// 	],
+		// 	"normalize": 1,
+		// 	"normalizeFrom": 3,
+		// 	"logY": 1,
+		// 	"nostack": 1,
+		// 	"ratio": 0,
+		// 	"rebin": 0,
+		// 	"min": 1e-5,
+		// 	"lumi": 33.1,
+		// 	"titles": ["n_{Tracks}","a.u.",""],
+		// }
+		// ,
+	]
+}

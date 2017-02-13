@@ -80,10 +80,12 @@ if not os.path.exists(options.outputDir):
 import time
 timestr = time.strftime("%Y%m%d-%H%M%S")
 
-outputRootFile = root_open(options.outputDir+"/plots_"+timestr+".root","w")
+text = ROOT.TLatex()
+
+# outputRootFile = root_open(options.outputDir+"/plots_"+timestr+".root","w")
 
 for plot in plots:
-	outputRootFile.cd()
+	# outputRootFile.cd()
 	if getProperty(plot,"aspectRatio"):
 		c = Canvas(700,int(700*float(plot["aspectRatio"]) ) )
 	else:
@@ -98,31 +100,105 @@ for plot in plots:
 			ROOT.gPad.SetRightMargin(0.25)
 
 			# get each hist, and draw colz. 
-			tmpFile = root_open(hist[0])
-			tmpHist = tmpFile.Get(str(hist[1]))
+
+			if "*" in hist[0]:
+				if not os.path.isfile("%s.root"%hist[0].split("*")[0] ):
+					os.system("hadd -f %s.root %s"%(hist[0].split("*")[0], hist[0] ) )
+				tmpFile = root_open( "%s.root"%hist[0].split("*")[0]  )
+			else:
+				tmpFile = root_open(hist[0])
+
+			tmpHist = asrootpy(tmpFile.Get(str(hist[1])).Clone())
+
+			if len(hist)>3:
+				tmpHist.Scale( eval(hist[3]) )
 
 			if getProperty(plot,"lumi"):
 				tmpHist.Scale(plot["lumi"])
 
-			tmpHist.Draw("colz")
+			tmpHist.Draw("colz2")
+			if not getProperty(plot,"noProfile"):
+				tmpHist.ProfileX().Draw("same")
+
+
+			datacolorpal = ["k","r","g","b"]
+
+
+
+			if getProperty(plot,"dataHists"):
+				for idataHist,dataHist in enumerate(plot["dataHists"]):
+					# get each hist, and draw colz. 
+					tmpDataFile = root_open(dataHist[0])
+					tmpDataHist = asrootpy(tmpDataFile.Get(str(dataHist[1])).Clone("dataHist%d"%idataHist))
+					tmpDataHist.color = datacolorpal[idataHist]
+					tmpDataHist.Draw("same text")
+
+
 
 			tmpHist.GetZaxis().SetTitleOffset(1.15)
 
-			# # set logz if requested
+			if getProperty(plot,"xRange"):
+				tmpHist.GetXaxis().SetRangeUser(*plot["xRange"])
+			if getProperty(plot,"yRange"):
+				tmpHist.GetYaxis().SetRangeUser(*plot["yRange"])
+
+			if getProperty(plot,"min")!="":
+				tmpHist.SetMinimum(plot["min"])
+			if getProperty(plot,"max")!="":
+				tmpHist.SetMaximum(plot["max"])
+
+			# # # set log if requested
+			ROOT.gPad.SetLogx(1 if getProperty(plot,"logX") else 0)
+			ROOT.gPad.SetLogy(1 if getProperty(plot,"logY") else 0)
 			ROOT.gPad.SetLogz(1 if getProperty(plot,"logZ") else 0)
 			ROOT.gPad.SetGrid()
+
+			tmpHist.GetXaxis().SetMoreLogLabels(1 if getProperty(plot,"logX") else 0)
+			tmpHist.GetYaxis().SetMoreLogLabels(1 if getProperty(plot,"logY") else 0)
 
 			# set titles
 			tmpHist.SetTitle("{0};{1};{2};{3}".format(hist[2],*plot["titles"] ) )
 
-			ROOT.ATLASLabel(0.2,0.9, inputJSON["ATLASLabel"]   )
+			if getProperty(plot,"box"):
+				box = ROOT.TBox()
+				box.SetFillStyle(0)
+				box.SetLineStyle(7)
+				box.DrawBox(*plot["box"])
+				if getProperty(plot,"boxIntegral"):
+					#calculate integral in box
+					tmpError = ROOT.Double()
+					tmpIntegral = tmpHist.IntegralAndError(
+						tmpHist.GetXaxis().FindBin(plot["box"][0]),
+						tmpHist.GetXaxis().FindBin(plot["box"][2]),
+						tmpHist.GetYaxis().FindBin(plot["box"][1]),
+						tmpHist.GetYaxis().FindBin(plot["box"][3]),
+						tmpError
+						)
+					# print tmpIntegral, tmpError
+					#print it in the box
+					text.SetNDC(0)
+					text.SetTextSize(0.015)
+					text.DrawLatex(plot["box"][0]*1.1,plot["box"][1]*1.1,"Integral in region: %.02f #pm %.02f"%(tmpIntegral,tmpError) )
+
+			if getProperty(plot,"xdiv"):
+				tmpHist.SetNdivisions(int(plot["xdiv"]),"x")
+			if getProperty(plot,"ydiv"):
+				tmpHist.SetNdivisions(int(plot["ydiv"]),"y")
+
+			ROOT.ATLASLabel(0.4,0.9, inputJSON["ATLASLabel"]   )
+			text.SetNDC()
+			text.SetTextSize(0.02)
+			text.DrawLatex(0.17,0.97,hist[2])
+			if getProperty(plot,"lumi"):
+				text.SetTextSize(0.025)
+				text.DrawLatex(0.4,0.87,"Data 2016, L = %s fb^{-1}"%plot["lumi"])
+
 
 			# write out the output filename with the input hist name appended
 			for iformat in formats:
-				c.SaveAs("%s/%s_%s.%s"%(options.outputDir,plot["plotFilename"],hist[2],iformat)  )
+				c.SaveAs("%s/%s_%s.%s"%(options.outputDir,plot["plotFilename"],str(hist[2]).translate(None," #{}()_,^=."),iformat)  )
 
 	elif getProperty(plot,"plotDim")==1:
-
 		if getProperty(plot,"ratio"):
 			pad1 = Pad( 0, 0.3, 1, 1.0)
 			pad1.SetBottomMargin(0); # Upper and lower plot are joined
@@ -139,13 +215,22 @@ for plot in plots:
 
 		histsToStack = []
 		for ihist,hist in enumerate(getProperty(plot,"hists") ):
-			tmpFile = root_open(hist[0])
+
+			if "*" in hist[0]:
+				if not os.path.isfile("%s.root"%hist[0].split("*")[0] ):
+					os.system("hadd -f %s.root %s"%(hist[0].split("*")[0], hist[0] ) )
+				tmpFile = root_open( "%s.root"%hist[0].split("*")[0]  )
+			else:
+				tmpFile = root_open(hist[0])
 			histsToStack.append( asrootpy(tmpFile.Get(str(hist[1]) )).Clone() )
 			histsToStack[-1].SetTitle("{0};{1};{2};{3}".format(hist[2],*plot["titles"] ) )
 			if getProperty(plot,"rebin"):
 				histsToStack[-1].Rebin(plot["rebin"])
 			if getProperty(plot,"xrange"):
 				histsToStack[-1].GetXaxis().SetRangeUser(*plot["xrange"])
+			if len(hist)>3:
+				histsToStack[-1].Scale( eval(hist[3]) )
+
 
 
 		stack = HistStack()
@@ -162,16 +247,19 @@ for plot in plots:
 				if getProperty(plot,"lumi"):
 					tmphist.Scale(plot["lumi"])
 				if getProperty(plot,"normalize") and getProperty(plot,"nostack"):
-					tmphist.Scale(1./tmphist.Integral() )
+					startBin = 0 if not getProperty(plot,"normalizeFrom") else tmphist.FindBin(plot["normalizeFrom"])
+					tmphist.Scale(1./tmphist.Integral(startBin,-1) )
 
 				tmphist.fillstyle = "hollow" if getProperty(plot,"nostack") else "solid"
 				tmphist.fillcolor = colorpal[ihist]
 				tmphist.linecolor = darkercolorpal[ihist]
+				tmphist.linewidth = 2
 				stack.Add(tmphist)
 
 
 		if getProperty(plot,"normalize") and not getProperty(plot,"nostack"):
-			totalIntegral = stack.sum.Integral()
+			startBin = 0 if not getProperty(plot,"normalizeFrom") else stack.sum.FindBin(plot["normalizeFrom"])
+			totalIntegral = stack.sum.Integral(startBin,-1)
 			for myHist in stack:
 				myHist.Scale(1./totalIntegral)
 
@@ -200,7 +288,8 @@ for plot in plots:
 			if getProperty(plot,"lumi"):
 				signalHist.Scale(plot["lumi"])
 			if getProperty(plot,"normalize") and signalHist.Integral():
-				signalHist.Scale(1./signalHist.Integral())
+				startBin = 0 if not getProperty(plot,"normalizeFrom") else signalHist.FindBin(plot["normalizeFrom"])
+				signalHist.Scale(1./signalHist.Integral(startBin,-1  ))
 
 		# ...and now the data histograms
 
@@ -219,7 +308,8 @@ for plot in plots:
 		for idataHist, dataHist in enumerate(dataHists):
 			dataHist.color = datacolorpal[idataHist]
 			if getProperty(plot,"normalize") and dataHist.Integral():
-				dataHist.Scale(1./dataHist.Integral())
+				startBin = 0 if not getProperty(plot,"normalizeFrom") else dataHist.FindBin(plot["normalizeFrom"])
+				dataHist.Scale(1./dataHist.Integral(startBin,-1))
 
 
 		## ...finally actually going to draw everything!
@@ -249,27 +339,30 @@ for plot in plots:
 				dataHist.Draw(drawOptions)
 				somethingDrawn = True
 
+
+		if getProperty(plot,"integralAbove"):
+			if stack.sum.Integral():
+				print "stack has integral above %f of %f"%(plot["integralAbove"], stack.sum.Integral( stack.sum.FindBin(plot["integralAbove"]) ,-1) )
+			for idataHist, dataHist in enumerate(dataHists):
+				if dataHist.Integral():
+					print "data has integral above %f of %f"%(plot["integralAbove"], dataHist.Integral( dataHist.FindBin(plot["integralAbove"]) ,-1) )
+
+		if getProperty(plot,"fit"):
+			for idataHist, dataHist in enumerate(dataHists):
+				fitFunc = rootpy.R.TF1("fit",plot["fit"][0], float(plot["fit"][1]), float(plot["fit"][2]) )
+				dataHist.Fit(fitFunc,"R")
+				dataHist.Reset()
+				fitFunc.SetLineColor(ROOT.kRed)
+				fitFunc.SetLineWidth(2)
+				fitFunc.Clone().Draw("same")
+				fitFunc.SetLineWidth(1)
+				fitFunc.SetLineStyle(2)
+				fitFunc.SetRange(dataHist.GetXaxis().GetXmin(),dataHist.GetXaxis().GetXmax() )
+				fitFunc.Clone().Draw("same")
+				if getProperty(plot,"integralAbove"):
+					print "fit has integral %f"%fitFunc.Integral( plot["integralAbove"], 1e9 )
+
 		rootstack.GetHistogram().SetTitle("{0};{1};{2};{3}".format(hist[2],*plot["titles"] ) )
-
-
-		allItems = dataHists + sortedHistsToStack + signalHists
-
-		legend = Legend( len(allItems), leftmargin=0.4, margin=0.25, topmargin=0.03, entryheight=0.025, textsize=0.03)
-
-		for item in allItems:
-			style = "L"
-			if item in dataHists:
-				style = "P"
-			elif item in sortedHistsToStack:
-				style = "F"
-			legend.AddEntry(item, style=style )
-
-
-		legend.SetBorderSize(1)
-		legend.SetTextSize(0.03)
-		legend.Draw()
-
-		ROOT.ATLASLabel(0.2,0.9, inputJSON["ATLASLabel"]   )
 
 
 		newMax = rootstack.GetMaximum()*1000. if getProperty(plot,"logY") else rootstack.GetMaximum()*1.2
@@ -282,6 +375,38 @@ for plot in plots:
 
 		ROOT.gPad.SetLogy(1 if getProperty(plot,"logY") else 0)
 		ROOT.gPad.SetGrid()
+
+
+		allItems = dataHists + sortedHistsToStack + signalHists
+
+		legend = Legend( len(allItems), leftmargin=0.1, margin=0.25, topmargin=0.06, entryheight=0.02)
+
+		for item in allItems:
+			style = "L"
+			if item in dataHists:
+				if getProperty(plot,"fit"):
+					continue
+				style = "P"
+			elif item in sortedHistsToStack:
+				style = "F"
+			legend.AddEntry(item, style=style )
+
+
+		legend.SetBorderSize(1)
+		legend.SetTextSize(0.025)
+		legend.SetLineWidth(0)
+		legend.Draw()
+
+		ROOT.ATLASLabel(0.2,0.9, inputJSON["ATLASLabel"]   )
+
+
+		if getProperty(plot,"verticalLines"):
+			verticalLine = ROOT.TLine()
+			verticalLine.SetLineWidth(2)
+			verticalLine.SetLineStyle(5)
+			for vertLineValue in plot["verticalLines"]:
+				verticalLine.DrawLine(vertLineValue, ROOT.gPad.GetUymin(), vertLineValue, ROOT.gPad.GetUymax())
+
 
 		if getProperty(plot,"ratio"):
 			pad2.cd()
@@ -320,10 +445,10 @@ for plot in plots:
 		# write out the output filename with the input hist name appended
 		for iformat in formats:
 			c.SaveAs("%s/%s.%s"%(options.outputDir,plot["plotFilename"],iformat)  )
-	outputRootFile.cd()
-	c.Write(plot["plotFilename"])
+	# outputRootFile.cd()
+	# c.Write(plot["plotFilename"])
 
-outputRootFile.Write()
-outputRootFile.Close()
+# outputRootFile.Write()
+# outputRootFile.Close()
 
 

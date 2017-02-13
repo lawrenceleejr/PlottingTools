@@ -1,0 +1,95 @@
+{
+	"ATLASLabel": "Internal",
+	"plots":[
+		{
+			"skip": 0,
+			"plotFilename": "DV_nTrack_vs_Mass",
+			"plotDim": 2,
+			"hists": [
+				["hists/hist-group.phys-susy.402074*","DV_nTracks_vs_DV_m_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 1 ns)" , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402720*","DV_nTracks_vs_DV_m_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1400 GeV, 100  GeV, 1 ns)" , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402742*","DV_nTracks_vs_DV_m_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1400 GeV, 600  GeV, 1 ns)" , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402743*","DV_nTracks_vs_DV_m_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1400 GeV, 800  GeV, 1 ns)" , "1000.*0.0253/8500"],
+				["hists/hist-group.phys-susy.402721*","DV_nTracks_vs_DV_m_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1400 GeV, 1270 GeV, 1 ns)" , "1000.*0.0253/8800"],
+				["hists/hist-group.phys-susy.402722*","DV_nTracks_vs_DV_m_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1400 GeV, 1320 GeV, 1 ns)" , "1000.*0.0253/9000"],
+				["hists/hist-group.phys-susy.402723*","DV_nTracks_vs_DV_m_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1400 GeV, 1350 GeV, 1 ns)" , "1000.*0.0253/10000"],
+				["hists/hist-group.phys-susy.402724*","DV_nTracks_vs_DV_m_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1400 GeV, 1370 GeV, 1 ns)" , "1000.*0.0253/10000"],
+				["hists/hist-group.phys-susy.402773*","DV_nTracks_vs_DV_m_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 0.01 ns)"   , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402781*","DV_nTracks_vs_DV_m_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 0.04 ns)"   , "1000.*0.0856/8000"  ],
+				["hists/hist-group.phys-susy.402789*","DV_nTracks_vs_DV_m_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 0.1  ns)"  , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402073*","DV_nTracks_vs_DV_m_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 0.4  ns)"  , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402075*","DV_nTracks_vs_DV_m_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 10 ns)"   , "1000.*0.0856/10000"  ],
+			],
+			"dataHists": [
+				["hists/data.root","DV_nTracks_vs_DV_m_SRSelection","thing","1."],
+			],
+			"logX": 1,
+			"logY": 1,
+			"logZ": 1,
+			// "min": 1e-5,
+			"max": 50,
+			"noProfile": 1,
+			"box": [5,10,50,100],
+			"boxIntegral": 1,
+			"lumi": 33.1,
+			// "xdiv": 999,
+			// "ydiv": 100,
+			"titles": ["DV n_{Tracks}","m_{DV} [GeV]","Entries"]
+		}
+		,
+		{
+			"plotFilename": "DV_nTracks_SR",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402773*","DV_nTracks*(DV_passCut5)_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 0.01 ns)"   , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402781*","DV_nTracks*(DV_passCut5)_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 0.04 ns)"   , "1000.*0.0856/8000"  ],
+				["hists/hist-group.phys-susy.402789*","DV_nTracks*(DV_passCut5)_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 0.1  ns)"  , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402073*","DV_nTracks*(DV_passCut5)_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 0.4  ns)"  , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402075*","DV_nTracks*(DV_passCut5)_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 10 ns)"   , "1000.*0.0856/10000"  ],
+			],
+			"dataHists": [
+				["hists/data.root", "DV_nTracks*(DV_passCut5)_SRSelection","Data 2016, L=33 ifb"],
+			],
+			"signalHists": [
+			],
+			// "normalize": 1,
+			// "normalizeFrom": 3,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			// "rebin": 2,
+			"min": 1e-1,
+			"max": 1e7,
+			"lumi": 33.1,
+			"verticalLines": [5],
+			"titles": ["n_{Tracks}","Events",""],
+		}
+		,
+		{
+			"plotFilename": "DV_m_SR",
+			"plotDim": 1,
+			"hists": [
+				["hists/hist-group.phys-susy.402773*","DV_m*(DV_passCut5)_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 0.01 ns)"   , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402781*","DV_m*(DV_passCut5)_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 0.04 ns)"   , "1000.*0.0856/8000"  ],
+				["hists/hist-group.phys-susy.402789*","DV_m*(DV_passCut5)_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 0.1  ns)"  , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402073*","DV_m*(DV_passCut5)_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 0.4  ns)"  , "1000.*0.0856/10000"  ],
+				["hists/hist-group.phys-susy.402075*","DV_m*(DV_passCut5)_SRSelection","(m_{#tilde{g}}, m_{#tilde{#chi}_{1}^{0}}, #tau_{#tilde{g}})=(1200 GeV, 100  GeV, 10 ns)"   , "1000.*0.0856/10000"  ],
+			],
+			"dataHists": [
+				["hists/data.root", "DV_m*(DV_passCut5)_SRSelection","Data 2016, L=33 ifb"],
+			],
+			"signalHists": [
+			],
+			// "normalize": 1,
+			// "normalizeFrom": 3,
+			"logY": 1,
+			"nostack": 1,
+			"ratio": 0,
+			// "rebin": 2,
+			"min": 1e-1,
+			"lumi": 33.1,
+			"verticalLines": [10],
+			"titles": ["m_{DV} [GeV]","Events",""],
+		}
+	]
+}
